@@ -3,22 +3,25 @@ from gensim.models import KeyedVectors
 # セクションを抽出する関数
 def extract_section(data, section_name):
     section_header = f': {section_name}'
-    start_idx = None
+    in_target_section = False
+    target_lines = []
 
-    for i, line in enumerate(data):
+    for line in data:
         stripped = line.strip()
 
-        if stripped == section_header:
-            start_idx = i + 1
+        if stripped.startswith(': '):
+            if stripped == section_header:
+                in_target_section = True
+            else:
+                if in_target_section:
+                    break
             continue
 
-        if start_idx is not None:
-            if stripped.startswith(':') and stripped != section_header:
-                return data[start_idx:i]
-            if stripped == '':
-                return data[start_idx:i]
+        # セクション内の処理
+        if in_target_section and stripped:
+            target_lines.append(stripped)
 
-    return data[start_idx:] if start_idx is not None else []
+    return target_lines
 
 def main():
     model = KeyedVectors.load_word2vec_format('GoogleNews-vectors-negative300.bin', binary=True)

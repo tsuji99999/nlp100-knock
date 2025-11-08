@@ -1,24 +1,5 @@
 from gensim.models import KeyedVectors
-
-# セクションを抽出する関数
-def extract_section(data, section_name):
-    section_header = f': {section_name}'
-    start_idx = None
-
-    for i, line in enumerate(data):
-        stripped = line.strip()
-
-        if stripped == section_header:
-            start_idx = i + 1
-            continue
-
-        if start_idx is not None:
-            if stripped.startswith(':') and stripped != section_header:
-                return data[start_idx:i]
-            if stripped == '':
-                return data[start_idx:i]
-
-    return data[start_idx:] if start_idx is not None else []
+from ans54 import extract_section
 
 # 正解率を算出する関数
 def calc_accuracy(data, model):
