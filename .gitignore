@@ -1,0 +1,24 @@
+# 環境
+Dockerfile
+docker-compose.yml
+requirements.txt
+.venv/
+pyproject.toml
+uv.lock
+main.py
+requirements.txt
+.python-version
+
+# 環境変数
+.env
+
+# データ類
+college_computer_science.csv
+GoogleNews-vectors-negative300.bin
+questions-words.txt
+wordsim353/
+SST-2/
+dev_data.pkl
+train_data.pkl
+model.pkl
+vectorizer.pkl
