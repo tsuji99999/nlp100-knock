@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 from gensim.models import KeyedVectors
 
@@ -12,7 +13,7 @@ def main():
 
     # 1,2列目のコサイン類似度を算出
     df['word2vec_sim'] = df.apply(
-        lambda row: model.similarity(row['Word 1'], row['Word 2']) if row['Word 1'] in model and row['Word 2'] in model else None,
+        lambda row: model.similarity(row['Word 1'], row['Word 2']) if row['Word 1'] in model and row['Word 2'] in model else np.nan,
         axis=1
     )
     
