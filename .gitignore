@@ -13,6 +13,7 @@ requirements.txt
 .env
 
 # データ類
+__pycache__/
 college_computer_science.csv
 GoogleNews-vectors-negative300.bin
 questions-words.txt
