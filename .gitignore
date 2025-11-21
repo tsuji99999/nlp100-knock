@@ -23,3 +23,8 @@ dev_data.pkl
 train_data.pkl
 model.pkl
 vectorizer.pkl
+embedding_matrix.npy
+token_mapping.pkl
+word_embedding.npy
+logistic_regression_model.pth
+word_embedding.pkl
